@@ -23,7 +23,16 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+
+  MyHomePage({super.key, required this.title});
+
+  final List<Map> demoWidgets = 
+     List.generate(10, (index) => 
+     {
+       "id": index,
+       "name" : "Product $index"
+     }
+     ).toList();
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -72,7 +81,14 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Card(
+      body: GridView.count(
+          crossAxisCount: 2,
+          children: List.generate(1, (index) {
+            return
+
+      Center(
+        child:
+      Card(
         elevation: 20,
         color: Colors.orangeAccent,
         child: Padding(
@@ -80,16 +96,45 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
+
               const SizedBox(height: 8),
-              const Text('Widget 1'),
+              const Text('Widget '),
               TextButton(
                 onPressed: (){}, 
                 child: const Text('Press')
               ),
+
+              const SizedBox(height: 8),
+              const Text('Widget 2'),
+              TextButton(
+                onPressed: (){}, 
+                child: const Text('Press')
+              ),
+
+              const SizedBox(height: 8),
+              const Text('Widget 2'),
+              TextButton(
+                onPressed: (){}, 
+                child: const Text('Press')
+              ),
+
             ],
           ), 
         ),
       ),
+
+      );
+
+          }
+          
+
+
+
+           }),
+
+          )
+      
+      
     );
   }
 }
